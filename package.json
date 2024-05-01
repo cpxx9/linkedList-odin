@@ -4,7 +4,9 @@
   "description": "Linked lists project for TOP",
   "main": "index.js",
   "scripts": {
-    "nodedev": "nodemon --exec babel-node src/index.js"
+    "dev": "nodemon --exec babel-node src/index.js",
+    "build": "babel src -d build",
+    "start": "node build/index.js"
   },
   "author": "CJP Labs <prattecole@gmail.com>",
   "license": "MIT",
