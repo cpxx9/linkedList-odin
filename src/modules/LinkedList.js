@@ -15,11 +15,16 @@ class LinkedList {
     this.#size += 1;
   }
 
-  append(value) {
+  prepend(value) {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
+      this.#setSize();
+      return;
     }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.#setSize();
   }
 }
 
