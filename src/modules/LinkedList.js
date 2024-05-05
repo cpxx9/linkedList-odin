@@ -26,6 +26,23 @@ class LinkedList {
     this.head = newNode;
     this.#setSize();
   }
+
+  append(value) {
+    const newNode = new Node(value);
+    let currentNode;
+    if (this.#size === 0) {
+      this.head = newNode;
+      return;
+    }
+    currentNode = this.head;
+    for (let i = 0; i < this.#size; i += 1) {
+      if (!currentNode.next) {
+        currentNode.next = newNode;
+        return;
+      }
+      currentNode = currentNode.next;
+    }
+  }
 }
 
 export default LinkedList;
