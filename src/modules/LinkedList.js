@@ -52,6 +52,42 @@ class LinkedList {
     }
     return currentNode;
   }
+
+  at(index) {
+    if (!this.head) {
+      return console.log('Nothing in this LinkedList');
+    }
+    if (this.#size < index + 1) {
+      return console.log('This LinkedList is too small');
+    }
+    let currentNode = this.head;
+    for (let i = 0; i < index; i += 1) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  pop() {
+    let currentNode = this.head;
+    let prevNode;
+    while (currentNode.next) {
+      prevNode = currentNode;
+      currentNode = currentNode.next;
+    }
+    prevNode.next = null;
+    return currentNode;
+  }
+
+  contains(testValue) {
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (currentNode.data === testValue) {
+        return true;
+      }
+      currentNode = currentNode.next;
+    }
+    return false;
+  }
 }
 
 export default LinkedList;
