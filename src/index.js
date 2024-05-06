@@ -7,4 +7,4 @@ ll.append(100);
 ll.append(500);
 ll.append(700);
 
-ll.contains(800);
+console.log(ll.find(200));
