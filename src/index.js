@@ -8,3 +8,4 @@ ll.append(500);
 ll.append(700);
 
 console.log(ll.find(200));
+console.log(ll.toString()); 
