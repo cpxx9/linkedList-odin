@@ -29,19 +29,28 @@ class LinkedList {
 
   append(value) {
     const newNode = new Node(value);
-    let currentNode;
     if (this.#size === 0) {
       this.head = newNode;
+      this.#setSize();
       return;
     }
-    currentNode = this.head;
+    let currentNode = this.head;
     for (let i = 0; i < this.#size; i += 1) {
       if (!currentNode.next) {
         currentNode.next = newNode;
         return;
       }
       currentNode = currentNode.next;
+      this.#setSize();
     }
+  }
+
+  tail() {
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
   }
 }
 
