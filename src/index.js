@@ -7,5 +7,5 @@ ll.append(100);
 ll.append(500);
 ll.append(700);
 
-console.log(ll.find(200));
-console.log(ll.toString()); 
+console.log(ll.insertAt(600, 1));
+console.log(ll.toString());

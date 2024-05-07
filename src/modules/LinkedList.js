@@ -11,27 +11,27 @@ class LinkedList {
     return this.#size;
   }
 
-  #setSize() {
-    this.#size += 1;
+  #setSize(value) {
+    this.#size += value;
   }
 
   prepend(value) {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
-      this.#setSize();
+      this.#setSize(1);
       return;
     }
     newNode.next = this.head;
     this.head = newNode;
-    this.#setSize();
+    this.#setSize(1);
   }
 
   append(value) {
     const newNode = new Node(value);
     if (this.#size === 0) {
       this.head = newNode;
-      this.#setSize();
+      this.#setSize(1);
       return;
     }
     let currentNode = this.head;
@@ -41,7 +41,7 @@ class LinkedList {
         return;
       }
       currentNode = currentNode.next;
-      this.#setSize();
+      this.#setSize(1);
     }
   }
 
@@ -75,6 +75,7 @@ class LinkedList {
       currentNode = currentNode.next;
     }
     prevNode.next = null;
+    this.#setSize(-1);
     return currentNode;
   }
 
@@ -106,14 +107,31 @@ class LinkedList {
   }
 
   toString() {
-    let string = "";
+    let string = '';
     let currentNode = this.head;
-    while(currentNode) {
+    while (currentNode) {
       string += `(${currentNode.data}) -> `;
       currentNode = currentNode.next;
     }
-    string  += "null";
+    string += 'null';
     return string;
+  }
+
+  insertAt(value, index) {
+    if (index > this.#size - 1 || index < 0) {
+      return 'Index not in bound of LinkedList';
+    }
+    const newNode = new Node(value);
+    let prev;
+    let curr = this.head;
+    for (let i = 0; i < index; i += 1) {
+      prev = curr;
+      curr = curr.next;
+    }
+    newNode.next = prev.next;
+    prev.next = newNode;
+    this.#setSize(-1);
+    return newNode;
   }
 }
 
