@@ -134,7 +134,7 @@ class LinkedList {
     return newNode;
   }
 
-  removeAt(index) {  
+  removeAt(index) {
     if (index > this.#size - 1 || index < 0) {
       return 'Index not in bound of LinkedList';
     }
