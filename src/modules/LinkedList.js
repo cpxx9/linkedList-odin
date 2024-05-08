@@ -130,8 +130,23 @@ class LinkedList {
     }
     newNode.next = prev.next;
     prev.next = newNode;
-    this.#setSize(-1);
+    this.#setSize(1);
     return newNode;
+  }
+
+  removeAt(index) {  
+    if (index > this.#size - 1 || index < 0) {
+      return 'Index not in bound of LinkedList';
+    }
+    let prev;
+    let curr = this.head;
+    for (let i = 0; i < index; i += 1) {
+      prev = curr;
+      curr = curr.next;
+    }
+    prev.next = curr.next;
+    this.#setSize(-1);
+    return curr;
   }
 }
 
